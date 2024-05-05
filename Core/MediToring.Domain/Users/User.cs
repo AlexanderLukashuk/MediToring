@@ -1,5 +1,6 @@
 using BuildingBlocks.Domain;
 using MediToring.Domain.Enums;
+using MediToring.Domain.Medications;
 
 namespace MediToring.Domain.Users;
 
@@ -9,6 +10,7 @@ public class User : EntityBase<Guid>
     public string Name { get; set; }
     public string PasswordHash { get; private set; }
     public Role UserRole { get; set; }
+    public ICollection<MedicationSchedule> MedicationSchedules { get; set; }
 
     private User() { }
 
