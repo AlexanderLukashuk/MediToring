@@ -3,6 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{238CD5A9-B04C-4B72-BC7B-9C3AA647FA3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediToring.Domain", "Core\MediToring.Domain\MediToring.Domain.csproj", "{F9AE544A-F201-4D10-8423-2BEB6910DAEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediToring.Application", "Core\MediToring.Application\MediToring.Application.csproj", "{C9B96790-B621-4A0B-AEBE-946DD18F6C14}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{EBCC37C5-DFF2-4807-9AFE-8414353BF5B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediToring.Infrastructure", "Infrastructure\MediToring.Infrastructure\MediToring.Infrastructure.csproj", "{F00F6EBB-9F59-4619-8BA2-C7E62D894AB6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{FD726473-24B1-4F06-A4F0-3070CAD17D2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediToring.WebApi", "Presentation\MediToring.WebApi\MediToring.WebApi.csproj", "{D2FA3C2B-5B58-4E99-A675-D7E58D054DAD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{DDE61E53-64FD-4132-8932-C9D6B84EC334}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Domain", "shared\BuildingBlocks.Domain\BuildingBlocks.Domain.csproj", "{1DC02388-78FA-483F-AD30-860883BA3C5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -10,5 +28,34 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F9AE544A-F201-4D10-8423-2BEB6910DAEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9AE544A-F201-4D10-8423-2BEB6910DAEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9AE544A-F201-4D10-8423-2BEB6910DAEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9AE544A-F201-4D10-8423-2BEB6910DAEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9B96790-B621-4A0B-AEBE-946DD18F6C14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9B96790-B621-4A0B-AEBE-946DD18F6C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9B96790-B621-4A0B-AEBE-946DD18F6C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9B96790-B621-4A0B-AEBE-946DD18F6C14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F00F6EBB-9F59-4619-8BA2-C7E62D894AB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F00F6EBB-9F59-4619-8BA2-C7E62D894AB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F00F6EBB-9F59-4619-8BA2-C7E62D894AB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F00F6EBB-9F59-4619-8BA2-C7E62D894AB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2FA3C2B-5B58-4E99-A675-D7E58D054DAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2FA3C2B-5B58-4E99-A675-D7E58D054DAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2FA3C2B-5B58-4E99-A675-D7E58D054DAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2FA3C2B-5B58-4E99-A675-D7E58D054DAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DC02388-78FA-483F-AD30-860883BA3C5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DC02388-78FA-483F-AD30-860883BA3C5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DC02388-78FA-483F-AD30-860883BA3C5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DC02388-78FA-483F-AD30-860883BA3C5A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F9AE544A-F201-4D10-8423-2BEB6910DAEC} = {238CD5A9-B04C-4B72-BC7B-9C3AA647FA3E}
+		{C9B96790-B621-4A0B-AEBE-946DD18F6C14} = {238CD5A9-B04C-4B72-BC7B-9C3AA647FA3E}
+		{F00F6EBB-9F59-4619-8BA2-C7E62D894AB6} = {EBCC37C5-DFF2-4807-9AFE-8414353BF5B4}
+		{D2FA3C2B-5B58-4E99-A675-D7E58D054DAD} = {FD726473-24B1-4F06-A4F0-3070CAD17D2E}
+		{1DC02388-78FA-483F-AD30-860883BA3C5A} = {DDE61E53-64FD-4132-8932-C9D6B84EC334}
 	EndGlobalSection
 EndGlobal
