@@ -5,9 +5,9 @@ namespace MediToring.Domain.Medications;
 
 public class MedicationSchedule : EntityBase<Guid>
 {
-    public int MedicationId { get; set; }
+    public Guid MedicationId { get; set; }
     public Medication Medication { get; set; }
-    public int UserId { get; set; }
+    public Guid UserId { get; set; }
     public User User { get; set; }
     public DateTime StartTime { get; set; }
     public DateTime EndTime { get; set; }
