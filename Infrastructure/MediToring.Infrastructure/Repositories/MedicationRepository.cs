@@ -1,0 +1,33 @@
+using BuildingBlocks.Application;
+using MediToring.Domain;
+using MediToring.Domain.Medications;
+using Microsoft.EntityFrameworkCore;
+
+namespace MediToring.Infrastructure.Repositories;
+
+public class MedicationRepository(MediToringDbContext context) : IMedicationRepository
+{
+    public IUnitOfWork UnitOfWork => context;
+
+    public Medication Add(Medication medication)
+    {
+        return context.Medications.Add(medication).Entity;
+    }
+
+    public void Delete(Medication medication)
+    {
+        context.Medications.Remove(medication);
+    }
+
+    public async Task<Medication> Get(Guid guid)
+    {
+        var medication = await context.Medications.FindAsync(guid);
+
+        return medication;
+    }
+
+    public void Update(Medication medication)
+    {
+        context.Entry(medication).State = EntityState.Modified;
+    }
+}
