@@ -2,7 +2,7 @@ using BuildingBlocks.Domain;
 
 namespace MediToring.Domain.Medications;
 
-public class Medication : EntityBase<Guid>
+public class Medication : EntityBase<Guid>, IAggregateRoot
 {
     public string Name { get; set; }
     public string Dosage { get; set; }

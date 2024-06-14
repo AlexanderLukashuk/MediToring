@@ -3,7 +3,7 @@ using MediToring.Domain.Users;
 
 namespace MediToring.Domain.Medications;
 
-public class MedicationSchedule : EntityBase<Guid>
+public class MedicationSchedule : EntityBase<Guid>, IAggregateRoot
 {
     public Guid MedicationId { get; set; }
     public Medication Medication { get; set; }
