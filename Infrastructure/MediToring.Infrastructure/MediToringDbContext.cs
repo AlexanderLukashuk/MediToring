@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+using BuildingBlocks.Application;
 using MediToring.Application.Interfaces;
 using MediToring.Domain.Medications;
 using MediToring.Domain.Users;
@@ -6,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MediToring.Infrastructure;
 
-public class MediToringDbContext : DbContext, IMediToringDbContext
+public class MediToringDbContext : DbContext, IMediToringDbContext, IUnitOfWork
 {
     public DbSet<User> Users { get; set; }
     public DbSet<Medication> Medications { get; set; }
@@ -21,5 +23,12 @@ public class MediToringDbContext : DbContext, IMediToringDbContext
         modelBuilder.ApplyConfiguration(new MedicationConfiguration());
         modelBuilder.ApplyConfiguration(new MedicationScheduleConfiguration());
         base.OnModelCreating(modelBuilder);
+    }
+
+    public async Task<bool> SaveEntitiesASync(CancellationToken cancellationToken = default)
+    {
+        _ = await base.SaveChangesAsync(cancellationToken);
+
+        return true;
     }
 }
