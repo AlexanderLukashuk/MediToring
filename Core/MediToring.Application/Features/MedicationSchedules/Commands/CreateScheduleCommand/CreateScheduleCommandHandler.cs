@@ -1,24 +1,28 @@
 using MediatR;
 using MediToring.Application.Interfaces;
+using MediToring.Domain;
 using MediToring.Domain.Medications;
 
 namespace MediToring.Application.Features.MedicationSchedules.Commands.CreateScheduleCommand;
 
-public class CreateScheduleCommandHandler(IMediToringDbContext context) 
+public class CreateScheduleCommandHandler(IMedicationScheduleRepository repository) 
     : IRequestHandler<CreateScheduleCommand, Guid>
 {
     public async Task<Guid> Handle(CreateScheduleCommand request, CancellationToken cancellationToken)
     {
+        var dailyDoses = request.DailyDoses.Select(d => 
+            new DailyDose { TimeOfDay = d.TimeOfDay, BeforeMeal = d.BeforeMeal }).ToList();
+
         var schedule = new MedicationSchedule(
             request.MedicationId, 
             request.UserId, 
             request.StartTime, 
             request.EndTime, 
-            request.DailyDoses
+            dailyDoses
         );
 
-        await context.MedicationSchedules.AddAsync(schedule);
-        await context.SaveChangesAsync(cancellationToken);
+        repository.Add(schedule);
+        await repository.UnitOfWork.SaveEntitiesASync(cancellationToken);
 
         return schedule.Id;
     }

@@ -1,18 +1,17 @@
 using MediatR;
 using MediToring.Application.Features.MedicationSchedules.Queries.Models;
 using MediToring.Application.Interfaces;
+using MediToring.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace MediToring.Application.Features.MedicationSchedules.Queries.GetUserMedicationSchedulesForMedication;
 
-public class GetUserMedicationSchedulesForMedicationQueryHandler(IMediToringDbContext context)
+public class GetUserMedicationSchedulesForMedicationQueryHandler(IMedicationScheduleRepository repository)
     : IRequestHandler<GetUserMedicationSchedulesForMedicationQuery, MedicationScheduleVm>
 {
     public async Task<MedicationScheduleVm> Handle(GetUserMedicationSchedulesForMedicationQuery request, CancellationToken cancellationToken)
     {
-        var schedules = await context.MedicationSchedules
-            .Where(schedule => schedule.Id == request.UserId && schedule.MedicationId == request.MedicationId)
-            .ToListAsync(cancellationToken);
+        var schedules = await repository.GetByUserIdAndMedicationId(request.UserId, request.MedicationId);
 
         var scheduleDtos = schedules.Select(schedule => new MedicationScheduleDto
         {
