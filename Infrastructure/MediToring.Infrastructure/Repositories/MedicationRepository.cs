@@ -26,6 +26,11 @@ public class MedicationRepository(MediToringDbContext context) : IMedicationRepo
         return medication;
     }
 
+    public async Task<IEnumerable<Medication>> GetAll()
+    {
+        return await context.Medications.ToListAsync();
+    }
+
     public void Update(Medication medication)
     {
         context.Entry(medication).State = EntityState.Modified;

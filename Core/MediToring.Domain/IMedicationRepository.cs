@@ -9,4 +9,5 @@ public interface IMedicationRepository : IRepository<Medication>
     Task<Medication> Get(Guid guid);
     void Delete(Medication medication);
     void Update(Medication medication);
+    Task<IEnumerable<Medication>> GetAll();
 }
