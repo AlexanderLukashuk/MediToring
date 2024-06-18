@@ -1,21 +1,20 @@
+using AutoMapper;
 using MediatR;
 using MediToring.Application.Interfaces;
+using MediToring.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace MediToring.Application.Features.Medications.Queries.GetMedicationList;
 
-public class GetMedicationListQueryHandler(IMediToringDbContext context) 
+public class GetMedicationListQueryHandler(IMedicationRepository repository, IMapper mapper) 
     : IRequestHandler<GetMedicationListQuery, MedicationListVm>
 {
     public async Task<MedicationListVm> Handle(GetMedicationListQuery request, CancellationToken cancellationToken)
     {
-        var medications = await context.Medications
-            .Select(medication => new MedicationLookupDto
-            {
-                Name = medication.Name
-            })
-            .ToListAsync(cancellationToken);
+        var medications = await repository.GetAll();
 
-        return new MedicationListVm { Medications = medications };
+        var medicationDtos = mapper.Map<List<MedicationLookupDto>>(medications);
+
+        return new MedicationListVm { Medications = medicationDtos };
     }
 }
