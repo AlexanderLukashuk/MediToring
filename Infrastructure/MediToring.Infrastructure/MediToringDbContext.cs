@@ -4,11 +4,13 @@ using MediToring.Application.Interfaces;
 using MediToring.Domain.Medications;
 using MediToring.Domain.Users;
 using MediToring.Infrastructure.EntityTypeConfiguration;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace MediToring.Infrastructure;
 
-public class MediToringDbContext : DbContext, IMediToringDbContext, IUnitOfWork
+public class MediToringDbContext : IdentityDbContext<IdentityUser>, IMediToringDbContext, IUnitOfWork
 {
     public DbSet<User> Users { get; set; }
     public DbSet<Medication> Medications { get; set; }
@@ -22,6 +24,7 @@ public class MediToringDbContext : DbContext, IMediToringDbContext, IUnitOfWork
         modelBuilder.ApplyConfiguration(new UserConfiguration());
         modelBuilder.ApplyConfiguration(new MedicationConfiguration());
         modelBuilder.ApplyConfiguration(new MedicationScheduleConfiguration());
+        
         base.OnModelCreating(modelBuilder);
     }
 
