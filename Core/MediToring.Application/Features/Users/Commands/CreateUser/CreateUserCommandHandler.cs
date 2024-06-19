@@ -1,7 +1,3 @@
-using MediatR;
-using MediToring.Application.Interfaces;
-using MediToring.Domain.Users;
-
 namespace MediToring.Application.Features.Users.Commands.CreateUser;
 
 public class CreateUserCommandHandler(IMediToringDbContext context) : IRequestHandler<CreateUserCommand, Guid>

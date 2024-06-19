@@ -1,5 +1,3 @@
-using FluentValidation;
-
 namespace MediToring.Application.Features.MedicationSchedules.Commands.CreateScheduleCommand;
 
 public class CreateScheduleCommandValidator : AbstractValidator<CreateScheduleCommand>

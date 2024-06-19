@@ -1,5 +1,3 @@
-using FluentValidation;
-
 namespace MediToring.Application.Features.MedicationSchedules.Queries.GetUserMedicationSchedulesForMedication;
 
 public class GetUserMedicationSchedulesForMedicationQueryValidator : AbstractValidator<GetUserMedicationSchedulesForMedicationQuery>

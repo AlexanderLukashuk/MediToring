@@ -1,6 +1,3 @@
-using BuildingBlocks.Infrastructure;
-using MediToring.Domain.Medications;
-
 namespace MediToring.Domain;
 
 public interface IMedicationRepository : IRepository<Medication>

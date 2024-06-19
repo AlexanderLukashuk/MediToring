@@ -1,6 +1,3 @@
-using System.Reflection;
-using AutoMapper;
-
 namespace MediToring.Application.Common.Mappings;
 
 public class AssemblyMappingProfile : Profile

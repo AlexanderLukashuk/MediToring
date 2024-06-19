@@ -1,7 +1,3 @@
-using AutoMapper;
-using MediToring.Application.Common.Mappings;
-using MediToring.Domain.Medications;
-
 namespace MediToring.Application.Features.Medications.Queries.GetMedicationDetails;
 
 public class MedicationDetailsVm : IMapWith<Medication>

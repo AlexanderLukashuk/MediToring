@@ -1,8 +1,3 @@
-using MediatR;
-using MediToring.Application.Common.Exceptions;
-using MediToring.Application.Interfaces;
-using MediToring.Domain.Users;
-
 namespace MediToring.Application.Features.Users.Commands.DeleteUser;
 
 public class DeleteUserCommandHandler(IMediToringDbContext context) : IRequestHandler<DeleteUserCommand>

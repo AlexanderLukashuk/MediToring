@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace MediToring.Domain.Models.Request;
 
 public class RegisterModel

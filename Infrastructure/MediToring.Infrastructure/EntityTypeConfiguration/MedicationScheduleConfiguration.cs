@@ -1,7 +1,3 @@
-using MediToring.Domain.Medications;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
 namespace MediToring.Infrastructure.EntityTypeConfiguration;
 
 public class MedicationScheduleConfiguration : IEntityTypeConfiguration<MedicationSchedule>

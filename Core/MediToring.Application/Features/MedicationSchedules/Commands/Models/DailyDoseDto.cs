@@ -1,5 +1,3 @@
-using MediToring.Domain.Enums;
-
 namespace MediToring.Application.Features.MedicationSchedules.Commands.Models;
 
 public class DailyDoseDto

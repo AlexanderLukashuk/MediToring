@@ -1,9 +1,3 @@
-using MediatR;
-using MediToring.Application.Common.Exceptions;
-using MediToring.Application.Interfaces;
-using MediToring.Domain;
-using MediToring.Domain.Medications;
-
 namespace MediToring.Application.Features.Medications.Commands.DeleteMedication;
 
 public class DeleteMedicationCommandHandler(IMedicationRepository repository) 

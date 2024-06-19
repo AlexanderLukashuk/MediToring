@@ -1,0 +1,13 @@
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using BuildingBlocks.Application;
+global using MediToring.Domain.Medications;
+global using MediToring.Domain.Users;
+global using MediToring.Domain;
+global using MediToring.Application.Interfaces;
+global using MediToring.Infrastructure.Repositories;
+global using MediToring.Infrastructure.EntityTypeConfiguration;

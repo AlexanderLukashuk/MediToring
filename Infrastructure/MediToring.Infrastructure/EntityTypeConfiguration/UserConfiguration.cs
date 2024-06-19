@@ -1,7 +1,3 @@
-using MediToring.Domain.Users;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
 namespace MediToring.Infrastructure.EntityTypeConfiguration;
 
 public class UserConfiguration : IEntityTypeConfiguration<User>

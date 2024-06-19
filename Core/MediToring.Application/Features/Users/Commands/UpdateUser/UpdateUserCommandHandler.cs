@@ -1,9 +1,3 @@
-using MediatR;
-using MediToring.Application.Common.Exceptions;
-using MediToring.Application.Interfaces;
-using MediToring.Domain.Users;
-using Microsoft.EntityFrameworkCore;
-
 namespace MediToring.Application.Features.Users.Commands.UpdateUser;
 
 public class UpdateUserCommandHandler(IMediToringDbContext context) : IRequestHandler<UpdateUserCommand>

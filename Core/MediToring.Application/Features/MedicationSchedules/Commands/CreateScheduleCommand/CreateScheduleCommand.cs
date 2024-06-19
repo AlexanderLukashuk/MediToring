@@ -1,6 +1,3 @@
-using MediatR;
-using MediToring.Application.Features.MedicationSchedules.Commands.Models;
-
 namespace MediToring.Application.Features.MedicationSchedules.Commands.CreateScheduleCommand;
 
 public class CreateScheduleCommand : IRequest<Guid>

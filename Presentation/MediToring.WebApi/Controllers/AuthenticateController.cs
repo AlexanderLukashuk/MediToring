@@ -1,12 +1,3 @@
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using MediToring.Domain.Models.Request;
-using MediToring.Domain.Models.Response;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-
 namespace MediToring.WebApi.Controllers;
 
 [ApiController]

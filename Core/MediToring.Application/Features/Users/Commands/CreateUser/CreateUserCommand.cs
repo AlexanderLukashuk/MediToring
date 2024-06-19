@@ -1,5 +1,3 @@
-using MediatR;
-
 namespace MediToring.Application.Features.Users.Commands.CreateUser;
 
 public class CreateUserCommand : IRequest<Guid>

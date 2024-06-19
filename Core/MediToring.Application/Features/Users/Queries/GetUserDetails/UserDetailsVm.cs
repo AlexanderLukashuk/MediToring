@@ -1,7 +1,3 @@
-using AutoMapper;
-using MediToring.Application.Common.Mappings;
-using MediToring.Domain.Users;
-
 namespace MediToring.Application.Features.Users.Queries.GetUserDetails;
 
 public class UserDetailsVm : IMapWith<User>

@@ -1,13 +1,3 @@
-using AutoMapper;
-using MediatR;
-using MediToring.Application.Features.Medications.Commands.CreateMedication;
-using MediToring.Application.Features.Medications.Commands.DeleteMedication;
-using MediToring.Application.Features.Medications.Commands.UpdateMedication;
-using MediToring.Application.Features.Medications.Queries.GetMedicationDetails;
-using MediToring.Application.Features.Medications.Queries.GetMedicationList;
-using MediToring.WebApi.Models.Request.Medications;
-using Microsoft.AspNetCore.Mvc;
-
 namespace MediToring.WebApi.Controllers;
 
 [ApiController]

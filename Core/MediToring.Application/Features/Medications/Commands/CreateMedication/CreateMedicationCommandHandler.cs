@@ -1,8 +1,3 @@
-using MediatR;
-using MediToring.Application.Interfaces;
-using MediToring.Domain;
-using MediToring.Domain.Medications;
-
 namespace MediToring.Application.Features.Medications.Commands.CreateMedication;
 
 public class CreateMedicationCommandHandler(IMedicationRepository repository) 

@@ -1,9 +1,3 @@
-using MediatR;
-using MediToring.Application.Features.MedicationSchedules.Queries.Models;
-using MediToring.Application.Interfaces;
-using MediToring.Domain;
-using Microsoft.EntityFrameworkCore;
-
 namespace MediToring.Application.Features.MedicationSchedules.Queries.GetUserMedicationSchedulesForMedication;
 
 public class GetUserMedicationSchedulesForMedicationQueryHandler(IMedicationScheduleRepository repository)

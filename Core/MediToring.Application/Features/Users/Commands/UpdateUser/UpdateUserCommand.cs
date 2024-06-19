@@ -1,5 +1,3 @@
-using MediatR;
-
 namespace MediToring.Application.Features.Users.Commands.UpdateUser;
 
 public class UpdateUserCommand : IRequest

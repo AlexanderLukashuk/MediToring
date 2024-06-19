@@ -1,0 +1,15 @@
+global using System.Reflection;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.DependencyInjection;
+global using AutoMapper;
+global using MediatR;
+global using FluentValidation;
+global using MediToring.Domain;
+global using MediToring.Domain.Medications;
+global using MediToring.Domain.Enums;
+global using MediToring.Domain.Users;
+global using MediToring.Application.Common.Exceptions;
+global using MediToring.Application.Common.Mappings;
+global using MediToring.Application.Features.MedicationSchedules.Commands.Models;
+global using MediToring.Application.Features.MedicationSchedules.Queries.Models;
+global using MediToring.Application.Interfaces;

@@ -1,10 +1,3 @@
-using AutoMapper;
-using MediatR;
-using MediToring.Application.Common.Exceptions;
-using MediToring.Application.Interfaces;
-using MediToring.Domain.Users;
-using Microsoft.EntityFrameworkCore;
-
 namespace MediToring.Application.Features.Users.Queries.GetUserDetails;
 
 public class GetUserDetailsQueryHandler(IMediToringDbContext context, IMapper mapper) 

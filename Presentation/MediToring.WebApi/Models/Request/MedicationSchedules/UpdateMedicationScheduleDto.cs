@@ -1,5 +1,3 @@
-using MediToring.Application.Features.MedicationSchedules.Commands.Models;
-
 namespace MediToring.WebApi.Models.Request.MedicationSchedules;
 
 public class UpdateMedicationScheduleDto

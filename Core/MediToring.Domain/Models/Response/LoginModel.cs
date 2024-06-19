@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace MediToring.Domain.Models.Response;
 
 public class LoginModel

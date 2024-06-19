@@ -1,16 +1,3 @@
-using System.Security.Claims;
-using AutoMapper;
-using MediatR;
-using MediToring.Application.Features.MedicationSchedules.Commands.CreateScheduleCommand;
-using MediToring.Application.Features.MedicationSchedules.Commands.DeleteScheduleCommand;
-using MediToring.Application.Features.MedicationSchedules.Commands.UpdateScheduleCommand;
-using MediToring.Application.Features.MedicationSchedules.Queries.GetUserMedicationSchedules;
-using MediToring.Application.Features.MedicationSchedules.Queries.GetUserMedicationSchedulesForMedication;
-using MediToring.Application.Features.MedicationSchedules.Queries.Models;
-using MediToring.WebApi.Models.Request.MedicationSchedules;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-
 namespace MediToring.WebApi.Controllers;
 
 [ApiController]

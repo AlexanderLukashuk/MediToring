@@ -1,8 +1,3 @@
-using System.Reflection;
-using MediatR;
-using MediToring.Application.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
-
 namespace MediToring.Application;
 
 public static class DependencyInjection

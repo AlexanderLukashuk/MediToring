@@ -1,5 +1,3 @@
-using AutoMapper;
-
 namespace MediToring.Application.Common.Mappings;
 
 public interface IMapWith<T>

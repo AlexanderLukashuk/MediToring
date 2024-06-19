@@ -1,15 +1,3 @@
-using System.Reflection;
-using System.Text;
-using MediToring.Application;
-using MediToring.Application.Common.Mappings;
-using MediToring.Application.Interfaces;
-using MediToring.Infrastructure;
-using MediToring.WebApi;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
-
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 

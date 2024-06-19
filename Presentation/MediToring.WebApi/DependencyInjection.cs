@@ -1,9 +1,3 @@
-using System.Text;
-using MediToring.Infrastructure;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.IdentityModel.Tokens;
-
 namespace MediToring.WebApi;
 
 public static class DependencyInjection

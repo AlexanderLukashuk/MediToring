@@ -1,5 +1,3 @@
-using MediatR;
-
 namespace MediToring.Application.Features.Medications.Commands.CreateMedication;
 
 public class CraeteMedicationCommand : IRequest<Guid>

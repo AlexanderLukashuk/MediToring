@@ -1,9 +1,3 @@
-using System.Xml.Serialization;
-using BuildingBlocks.Application;
-using MediToring.Domain;
-using MediToring.Domain.Medications;
-using Microsoft.EntityFrameworkCore;
-
 namespace MediToring.Infrastructure.Repositories;
 
 public class MedicationScheduleRepository : IMedicationScheduleRepository

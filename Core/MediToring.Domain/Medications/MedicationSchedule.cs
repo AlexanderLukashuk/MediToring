@@ -1,6 +1,3 @@
-using BuildingBlocks.Domain;
-using MediToring.Domain.Users;
-
 namespace MediToring.Domain.Medications;
 
 public class MedicationSchedule : EntityBase<Guid>, IAggregateRoot

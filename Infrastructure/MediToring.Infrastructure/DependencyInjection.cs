@@ -1,10 +1,3 @@
-using MediToring.Application.Interfaces;
-using MediToring.Domain;
-using MediToring.Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-
 namespace MediToring.Infrastructure;
 
 public static class DependencyInjection

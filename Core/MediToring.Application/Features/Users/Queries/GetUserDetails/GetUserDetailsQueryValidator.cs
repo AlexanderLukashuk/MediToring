@@ -1,5 +1,3 @@
-using FluentValidation;
-
 namespace MediToring.Application.Features.Users.Queries.GetUserDetails;
 
 public class GetUserDetailsQueryValidator : AbstractValidator<GetUserDetailsQuery>

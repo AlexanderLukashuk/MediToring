@@ -1,9 +1,3 @@
-using AutoMapper;
-using MediatR;
-using MediToring.Application.Interfaces;
-using MediToring.Domain;
-using Microsoft.EntityFrameworkCore;
-
 namespace MediToring.Application.Features.Medications.Queries.GetMedicationList;
 
 public class GetMedicationListQueryHandler(IMedicationRepository repository, IMapper mapper) 

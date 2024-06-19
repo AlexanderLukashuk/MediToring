@@ -1,5 +1,3 @@
-using MediToring.Domain.Enums;
-
 namespace MediToring.Domain.Medications;
 
 public class DailyDose

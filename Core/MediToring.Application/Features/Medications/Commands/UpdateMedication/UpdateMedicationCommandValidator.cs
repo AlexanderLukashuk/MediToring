@@ -1,5 +1,3 @@
-using FluentValidation;
-
 namespace MediToring.Application.Features.Medications.Commands.UpdateMedication;
 
 public class UpdateMedicationCommandValidator : AbstractValidator<UpdateMedicationCommand>

@@ -1,7 +1,3 @@
-using BuildingBlocks.Domain;
-using MediToring.Domain.Enums;
-using MediToring.Domain.Medications;
-
 namespace MediToring.Domain.Users;
 
 public class User : EntityBase<Guid>

@@ -1,7 +1,3 @@
-using MediToring.Domain.Medications;
-using MediToring.Domain.Users;
-using Microsoft.EntityFrameworkCore;
-
 namespace MediToring.Application.Interfaces;
 
 public interface IMediToringDbContext
