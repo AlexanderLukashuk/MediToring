@@ -1,4 +1,6 @@
 using MediToring.Application.Interfaces;
+using MediToring.Domain;
+using MediToring.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +26,9 @@ public static class DependencyInjection
             
             return context;
         });
+
+        services.AddScoped<IMedicationScheduleRepository, MedicationScheduleRepository>();
+        services.AddScoped<IMedicationRepository, MedicationRepository>();
 
         return services;
     }
