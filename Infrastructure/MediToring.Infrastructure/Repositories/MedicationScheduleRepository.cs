@@ -1,49 +1,42 @@
 namespace MediToring.Infrastructure.Repositories;
 
-public class MedicationScheduleRepository : IMedicationScheduleRepository
+public class MedicationScheduleRepository(MediToringDbContext context) : IMedicationScheduleRepository
 {
-    private readonly MediToringDbContext _context;
-
-    public MedicationScheduleRepository(MediToringDbContext context)
-    {
-        _context = context;
-    }
-
-    public IUnitOfWork UnitOfWork => _context;
+    public IUnitOfWork UnitOfWork => context;
 
     public MedicationSchedule Add(MedicationSchedule schedule)
     {
-        return _context.MedicationSchedules.Add(schedule).Entity;
+        return context.MedicationSchedules.Add(schedule).Entity;
     }
 
     public void Delete(MedicationSchedule schedule)
     {
-        _context.MedicationSchedules.Remove(schedule);
+        context.MedicationSchedules.Remove(schedule);
     }
 
     public async Task<MedicationSchedule> Get(Guid id)
     {
-        return await _context.MedicationSchedules.FindAsync(id);
+        return await context.MedicationSchedules.FindAsync(id);
     }
 
     public async Task<IEnumerable<MedicationSchedule>> GetAll()
     {
-        return await _context.MedicationSchedules
+        return await context.MedicationSchedules
             .Include(ms => ms.DailyDoses)
             .ToListAsync();
     }
 
-    public async Task<IEnumerable<MedicationSchedule>> GetByUserId(Guid userId)
+    public async Task<IEnumerable<MedicationSchedule>> GetByUserId(string userId)
     {
-        return await _context.MedicationSchedules
+        return await context.MedicationSchedules
             .Where(schedule => schedule.UserId == userId)
             .Include(schedule => schedule.Medication)
             .ToListAsync();
     }
 
-    public async Task<IEnumerable<MedicationSchedule>> GetByUserIdAndMedicationId(Guid userId, Guid medicationId)
+    public async Task<IEnumerable<MedicationSchedule>> GetByUserIdAndMedicationId(string userId, Guid medicationId)
     {
-        return await _context.MedicationSchedules
+        return await context.MedicationSchedules
             .Where(schedule => schedule.UserId == userId && schedule.MedicationId == medicationId)
             .Include(schedule => schedule.Medication)
             .ToListAsync();
@@ -51,6 +44,6 @@ public class MedicationScheduleRepository : IMedicationScheduleRepository
 
     public void Update(MedicationSchedule schedule)
     {
-        _context.Entry(schedule).State = EntityState.Modified;
+        context.Entry(schedule).State = EntityState.Modified;
     }
 }
