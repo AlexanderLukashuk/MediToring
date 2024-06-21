@@ -2,7 +2,6 @@ namespace MediToring.Infrastructure;
 
 public class MediToringDbContext : IdentityDbContext<IdentityUser>, IMediToringDbContext, IUnitOfWork
 {
-    public DbSet<User> Users { get; set; }
     public DbSet<Medication> Medications { get; set; }
     public DbSet<MedicationSchedule> MedicationSchedules { get; set; }
 
@@ -11,7 +10,6 @@ public class MediToringDbContext : IdentityDbContext<IdentityUser>, IMediToringD
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration(new UserConfiguration());
         modelBuilder.ApplyConfiguration(new MedicationConfiguration());
         modelBuilder.ApplyConfiguration(new MedicationScheduleConfiguration());
         
