@@ -4,6 +4,14 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+        InitializeDbContext(services, configuration);
+        AddRepositories(services);
+
+        return services;
+    }
+
+    private static void InitializeDbContext(IServiceCollection services, IConfiguration configuration)
+    {
         var connectionString = configuration.GetConnectionString("DbConnection");
 
         services.AddDbContext<MediToringDbContext>(options =>
@@ -16,13 +24,14 @@ public static class DependencyInjection
             {
                 throw new InvalidOperationException("MediToringDbContext is not registered");
             }
-            
+
             return context;
         });
+    }
 
+    private static void AddRepositories(IServiceCollection services)
+    {
         services.AddScoped<IMedicationScheduleRepository, MedicationScheduleRepository>();
         services.AddScoped<IMedicationRepository, MedicationRepository>();
-
-        return services;
     }
 }

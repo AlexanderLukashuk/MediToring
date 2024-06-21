@@ -3,29 +3,7 @@ ConfigurationManager configuration = builder.Configuration;
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
-builder.Services.AddIdentityAuth(builder.Configuration);
-
-builder.Services.AddAutoMapper(config =>
-{
-    config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
-    // чат гпт сказал эта строка не нужна:
-    // config.AddProfile(new AssemblyMappingProfile(typeof(IMediToringDbContext).Assembly));
-});
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll", policy =>
-    {
-        policy.AllowAnyHeader();
-        policy.AllowAnyMethod();
-        policy.AllowAnyOrigin();
-    });
-});
-
-builder.Services.AddControllers();
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddWebAPI(builder.Configuration);
 
 var app = builder.Build();
 

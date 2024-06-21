@@ -2,7 +2,36 @@ namespace MediToring.WebApi;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddIdentityAuth(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddWebAPI(this IServiceCollection services, IConfiguration configuration)
+    {
+        AddIdentityAuth(services, configuration);
+
+        services.AddAutoMapper(config =>
+        {
+            config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
+            // чат гпт сказал эта строка не нужна:
+            // config.AddProfile(new AssemblyMappingProfile(typeof(IMediToringDbContext).Assembly));
+        });
+
+        services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAll", policy =>
+            {
+                policy.AllowAnyHeader();
+                policy.AllowAnyMethod();
+                policy.AllowAnyOrigin();
+            });
+        });
+
+        services.AddControllers();
+
+        services.AddEndpointsApiExplorer();
+        services.AddSwaggerGen();
+
+        return services;
+    }
+
+    private static void AddIdentityAuth(IServiceCollection services, IConfiguration configuration)
     {
         services.AddIdentity<IdentityUser, IdentityRole>()
             .AddEntityFrameworkStores<MediToringDbContext>()
@@ -27,7 +56,5 @@ public static class DependencyInjection
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"]))
             };
         });
-
-        return services;
     }
 }
