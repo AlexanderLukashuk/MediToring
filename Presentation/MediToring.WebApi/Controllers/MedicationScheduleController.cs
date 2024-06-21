@@ -71,5 +71,5 @@ public class MedicationScheduleController : ControllerBase
         return NoContent();
     }
 
-    private Guid UserId => Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? Guid.Empty.ToString());
+    private string UserId => User.FindFirstValue(ClaimTypes.NameIdentifier) ?? string.Empty;
 }

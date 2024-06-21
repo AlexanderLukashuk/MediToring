@@ -7,7 +7,7 @@ public class CreateScheduleCommandValidator : AbstractValidator<CreateScheduleCo
         RuleFor(schedule =>
             schedule.MedicationId).NotEqual(Guid.Empty);
         RuleFor(schedule =>
-            schedule.UserId).NotEqual(Guid.Empty);
+            schedule.UserId).NotEmpty();
         RuleFor(schedule =>
             schedule.StartTime).NotEmpty();
         RuleFor(schedule =>

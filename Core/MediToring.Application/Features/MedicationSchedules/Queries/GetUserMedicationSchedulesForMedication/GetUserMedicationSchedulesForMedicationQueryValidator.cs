@@ -5,7 +5,7 @@ public class GetUserMedicationSchedulesForMedicationQueryValidator : AbstractVal
     public GetUserMedicationSchedulesForMedicationQueryValidator()
     {
         RuleFor(schedule =>
-            schedule.UserId).NotEqual(Guid.Empty);
+            schedule.UserId).NotEmpty();
         RuleFor(schedule =>
             schedule.MedicationId).NotEqual(Guid.Empty);
     }

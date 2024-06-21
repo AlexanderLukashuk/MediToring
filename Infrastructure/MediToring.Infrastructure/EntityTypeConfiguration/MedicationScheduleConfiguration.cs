@@ -12,8 +12,8 @@ public class MedicationScheduleConfiguration : IEntityTypeConfiguration<Medicati
             .HasForeignKey(schedule => schedule.MedicationId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        builder.HasOne(schedule => schedule.User)
-            .WithMany(user => user.MedicationSchedules)
+        builder.HasOne<IdentityUser>(schedule => schedule.User)
+            .WithMany()
             .HasForeignKey(schedule => schedule.UserId)
             .OnDelete(DeleteBehavior.Cascade);
 

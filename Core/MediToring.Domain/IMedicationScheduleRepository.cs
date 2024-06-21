@@ -7,6 +7,6 @@ public interface IMedicationScheduleRepository : IRepository<MedicationSchedule>
     void Delete(MedicationSchedule schedule);
     void Update(MedicationSchedule schedule);
     Task<IEnumerable<MedicationSchedule>> GetAll();
-    Task<IEnumerable<MedicationSchedule>> GetByUserId(Guid userId);
-    Task<IEnumerable<MedicationSchedule>> GetByUserIdAndMedicationId(Guid userId, Guid medicationId);
+    Task<IEnumerable<MedicationSchedule>> GetByUserId(string userId);
+    Task<IEnumerable<MedicationSchedule>> GetByUserIdAndMedicationId(string userId, Guid medicationId);
 }

@@ -5,6 +5,6 @@ public class GetUserMedicationSchedulesQueryValidator : AbstractValidator<GetUse
     public GetUserMedicationSchedulesQueryValidator()
     {
         RuleFor(query => 
-            query.UserId).NotEqual(Guid.Empty);
+            query.UserId).NotEmpty();
     }
 }

@@ -2,5 +2,5 @@ namespace MediToring.Application.Features.MedicationSchedules.Queries.GetUserMed
 
 public class GetUserMedicationSchedulesQuery : IRequest<MedicationScheduleVm>
 {
-    public Guid UserId { get; set; }
+    public string UserId { get; set; }
 }
