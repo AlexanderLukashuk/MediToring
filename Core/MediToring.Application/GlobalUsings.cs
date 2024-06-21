@@ -7,7 +7,6 @@ global using FluentValidation;
 global using MediToring.Domain;
 global using MediToring.Domain.Medications;
 global using MediToring.Domain.Enums;
-global using MediToring.Domain.Users;
 global using MediToring.Application.Common.Exceptions;
 global using MediToring.Application.Common.Mappings;
 global using MediToring.Application.Features.MedicationSchedules.Commands.Models;
