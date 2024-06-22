@@ -1,4 +1,4 @@
-namespace MediToring.Domain.Models.Response;
+namespace MediToring.Domain.Models.Request;
 
 public class LoginModel
 {
