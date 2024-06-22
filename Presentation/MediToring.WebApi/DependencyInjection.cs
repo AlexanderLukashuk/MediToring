@@ -9,6 +9,8 @@ public static class DependencyInjection
         services.AddAutoMapper(config =>
         {
             config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
+            config.AddProfile(new AssemblyMappingProfile(typeof(MedicationLookupDto).Assembly));
+            config.AddProfile(new AssemblyMappingProfile(typeof(MedicationDetailsVm).Assembly));
             // чат гпт сказал эта строка не нужна:
             // config.AddProfile(new AssemblyMappingProfile(typeof(IMediToringDbContext).Assembly));
         });
@@ -23,7 +25,10 @@ public static class DependencyInjection
             });
         });
 
-        services.AddControllers();
+        services.AddControllers(options =>
+        {
+            options.Filters.Add<ApiExceptionFilterAttribute>();
+        });
 
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
