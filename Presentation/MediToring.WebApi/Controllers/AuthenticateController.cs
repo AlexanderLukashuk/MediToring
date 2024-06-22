@@ -58,7 +58,7 @@ public class AuthenticateController(
 
         var token = new JwtSecurityToken(
             issuer: configuration["JWT:ValidIssuer"],
-            audience: configuration["JWTValidAudience"],
+            audience: configuration["JWT:ValidAudience"],
             expires: DateTime.Now.AddHours(3),
             claims: authClaims,
             signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)

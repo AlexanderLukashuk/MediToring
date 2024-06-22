@@ -1,5 +1,6 @@
 namespace MediToring.WebApi.Controllers;
 
+[Authorize(Policy = "UserPolicy")]
 [ApiController]
 [Route("api/[controller]")]
 public class MedicationScheduleController(IMapper mapper, IMediator mediator) : ControllerBase
