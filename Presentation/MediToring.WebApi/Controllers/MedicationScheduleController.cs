@@ -6,7 +6,6 @@ namespace MediToring.WebApi.Controllers;
 public class MedicationScheduleController(IMapper mapper, IMediator mediator) : ControllerBase
 {
     [HttpGet]
-    [Authorize]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<ActionResult<List<MedicationScheduleVm>>> GetAll()
@@ -17,7 +16,6 @@ public class MedicationScheduleController(IMapper mapper, IMediator mediator) : 
     }
 
     [HttpGet("{id}")]
-    [Authorize]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<ActionResult<MedicationScheduleVm>> Get(Guid id)
@@ -28,7 +26,6 @@ public class MedicationScheduleController(IMapper mapper, IMediator mediator) : 
     }
 
     [HttpPost]
-    [Authorize]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<ActionResult<Guid>> Create([FromBody] CreateMedicationScheduleDto dto)
@@ -40,7 +37,6 @@ public class MedicationScheduleController(IMapper mapper, IMediator mediator) : 
     }
 
     [HttpPut("{id}")]
-    [Authorize]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IActionResult> Update(Guid id, [FromBody] UpdateMedicationScheduleDto dto)
@@ -53,7 +49,6 @@ public class MedicationScheduleController(IMapper mapper, IMediator mediator) : 
     }
 
     [HttpDelete("{id}")]
-    [Authorize]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IActionResult> Delete(Guid id)

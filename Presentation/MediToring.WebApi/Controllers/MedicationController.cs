@@ -1,7 +1,6 @@
-using MediToring.Application.Common.Exceptions;
-
 namespace MediToring.WebApi.Controllers;
 
+[Authorize(Policy = "UserPolicy")]
 [ApiController]
 [Route("api/[controller]")]
 public class MedicationController(IMediator mediator, IMapper mapper) : ControllerBase
