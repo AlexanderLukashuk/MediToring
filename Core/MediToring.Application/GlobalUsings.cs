@@ -11,4 +11,3 @@ global using MediToring.Application.Common.Exceptions;
 global using MediToring.Application.Common.Mappings;
 global using MediToring.Application.Features.MedicationSchedules.Commands.Models;
 global using MediToring.Application.Features.MedicationSchedules.Queries.Models;
-global using MediToring.Application.Interfaces;
