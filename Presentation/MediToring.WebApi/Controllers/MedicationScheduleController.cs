@@ -45,8 +45,8 @@ public class MedicationScheduleController(IMapper mapper, IMediator mediator) : 
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IActionResult> Update(Guid id, [FromBody] UpdateMedicationScheduleDto dto)
     {
-        dto.Id = id;
         var command = mapper.Map<UpdateScheduleCommand>(dto);
+        command.Id = id;
         command.UserId = UserId;
         await mediator.Send(command);
         return NoContent();
