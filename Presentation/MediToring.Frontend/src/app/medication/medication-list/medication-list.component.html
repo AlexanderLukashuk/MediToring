@@ -1,0 +1,11 @@
+<!-- medication-list.component.html -->
+<div *ngIf="medications.length === 0">
+    No medications found.
+</div>
+<div *ngIf="medications.length > 0">
+    <ul>
+        <li *ngFor="let medication of medications">
+            <a [routerLink]="['/medication', medication.id]">{{ medication.name }}</a>
+        </li>
+    </ul>
+</div>

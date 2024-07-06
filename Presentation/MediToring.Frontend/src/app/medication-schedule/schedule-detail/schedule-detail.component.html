@@ -1,0 +1,11 @@
+<div class="schedule-detail-container" *ngIf="schedule.schedules && schedule.schedules.length > 0">
+    <h2>{{ schedule.schedules[0].medicationName }}</h2>
+    <p>Start Time: {{ schedule.schedules[0].startTime }}</p>
+    <p>End Time: {{ schedule.schedules[0].endTime }}</p>
+    <h3>Daily Doses</h3>
+    <ul>
+        <li *ngFor="let dose of schedule.schedules[0].doseRecords">
+            Date: {{ dose.date }}, Taken: {{ dose.isTaken ? 'Yes' : 'No' }}
+        </li>
+    </ul>
+</div>

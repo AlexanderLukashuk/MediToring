@@ -1,0 +1,12 @@
+.medication-detail-container {
+    padding: 20px;
+}
+
+.medication-detail-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.medication-detail-container p {
+    font-size: 16px;
+}

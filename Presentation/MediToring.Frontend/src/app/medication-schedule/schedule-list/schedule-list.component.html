@@ -1,0 +1,8 @@
+<div class="schedule-list-container">
+    <h2>Medication Schedules</h2>
+    <ul>
+        <li *ngFor="let schedule of schedules">
+            <a [routerLink]="['/medication-schedule', schedule.id]">{{ schedule.medicationName }}</a>
+        </li>
+    </ul>
+</div>
