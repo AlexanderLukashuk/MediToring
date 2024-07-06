@@ -14,6 +14,12 @@ public class AuthenticateController(
         var user = await userManager.FindByNameAsync(model.Username);
         if (user != null && await userManager.CheckPasswordAsync(user, model.Password))
         {
+            // мне вообще нужно сохранять username в claims???
+            if (string.IsNullOrEmpty(user.UserName))
+            {
+                return BadRequest("User name cannot be null or empty");
+            }
+
             var authClaims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.UserName),
@@ -39,7 +45,7 @@ public class AuthenticateController(
         var userExists = await userManager.FindByNameAsync(model.Username);
         if (userExists != null)
             return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
-        
+
         IdentityUser user = new()
         {
             Email = model.Email,
@@ -49,13 +55,19 @@ public class AuthenticateController(
         var result = await userManager.CreateAsync(user, model.Password);
         if (!result.Succeeded)
             return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User creation failed! Please check user details asn try again." });
-        
+
         return Ok(new Response { Status = "Success", Message = "User created successfully!" });
     }
 
     private JwtSecurityToken GetToken(List<Claim> authClaims)
     {
-        var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"]));
+        var jwtSecret = configuration["JWT:Secret"];
+        if (string.IsNullOrEmpty(jwtSecret))
+        {
+            throw new ConfigurationException("JWT Secret is not configured properly");
+        }
+
+        var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret));
 
         var token = new JwtSecurityToken(
             issuer: configuration["JWT:ValidIssuer"],

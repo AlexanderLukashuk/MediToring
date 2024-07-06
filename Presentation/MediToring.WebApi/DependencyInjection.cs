@@ -39,6 +39,12 @@ public static class DependencyInjection
 
     private static void AddIdentityAuth(IServiceCollection services, IConfiguration configuration)
     {
+        var jwtSecret = configuration["JWT:Secret"];
+        if (string.IsNullOrEmpty(jwtSecret))
+        {
+            throw new ConfigurationException("JWT Secret is not configured properly");
+        }
+
         services.AddIdentity<IdentityUser, IdentityRole>()
             .AddEntityFrameworkStores<MediToringDbContext>()
             .AddDefaultTokenProviders();
@@ -59,7 +65,7 @@ public static class DependencyInjection
                 ValidateAudience = true,
                 ValidAudience = configuration["JWT:ValidAudience"],
                 ValidIssuer = configuration["JWT:ValidIssuer"],
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"])),
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret)),
                 NameClaimType = ClaimTypes.Name,
                 RoleClaimType = ClaimTypes.Role,
             };
