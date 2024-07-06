@@ -5,8 +5,7 @@ public class CreateScheduleCommandHandler(IMedicationScheduleRepository reposito
 {
     public async Task<Guid> Handle(CreateScheduleCommand request, CancellationToken cancellationToken)
     {
-        var startTimeUtc = DateTime.SpecifyKind(request.StartTime, DateTimeKind.Utc);
-        var endTimeUtc = DateTime.SpecifyKind(request.EndTime, DateTimeKind.Utc);
+        var (startTimeUtc, endTimeUtc) = DateTimeConverter.ConvertToUtc(request.StartTime, request.EndTime);
 
         var dailyDoses = request.DailyDoses.Select(d => 
             new DailyDose { TimeOfDay = d.TimeOfDay, BeforeMeal = d.BeforeMeal }).ToList();

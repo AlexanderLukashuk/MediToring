@@ -5,8 +5,7 @@ public class UpdateScheduleCommandHandler(IMedicationScheduleRepository reposito
 {
     public async Task Handle(UpdateScheduleCommand request, CancellationToken cancellationToken)
     {
-        var startDateUtc = DateTime.SpecifyKind(request.StartTime, DateTimeKind.Utc);
-        var endDateUtc = DateTime.SpecifyKind(request.EndTime, DateTimeKind.Utc);
+        var (startTimeUtc, endTimeUtc) = DateTimeConverter.ConvertToUtc(request.StartTime, request.EndTime);
 
         var schedule = await repository.Get(request.Id);
 
@@ -17,8 +16,8 @@ public class UpdateScheduleCommandHandler(IMedicationScheduleRepository reposito
 
         schedule.MedicationId = request.MedicationId;
         schedule.UserId = request.UserId;
-        schedule.StartTime = startDateUtc;
-        schedule.EndTime = endDateUtc;
+        schedule.StartTime = startTimeUtc;
+        schedule.EndTime = endTimeUtc;
         schedule.DailyDoses = request.DailyDoses.Select(d => 
             new DailyDose { TimeOfDay = d.TimeOfDay, BeforeMeal = d.BeforeMeal }).ToList();
 
