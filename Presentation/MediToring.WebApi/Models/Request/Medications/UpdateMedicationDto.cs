@@ -2,9 +2,9 @@ namespace MediToring.WebApi.Models.Request.Medications;
 
 public class UpdateMedicationDto : IMapWith<UpdateMedicationCommand>
 {
-    public string Name { get; set; }
-    public string Dosage { get; set; }
-    public string Instruction { get; set; }
+    public required string Name { get; set; }
+    public required string Dosage { get; set; }
+    public required string Instruction { get; set; }
 
     public void Mapping(Profile profile)
     {

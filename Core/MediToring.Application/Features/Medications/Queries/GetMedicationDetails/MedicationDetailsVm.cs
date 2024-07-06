@@ -3,9 +3,9 @@ namespace MediToring.Application.Features.Medications.Queries.GetMedicationDetai
 public class MedicationDetailsVm : IMapWith<Medication>
 {
     public Guid Id { get; set; }
-    public string? Name { get; set; }
-    public string? Dosage { get; set; }
-    public string? Instruction { get; set; }
+    public required string Name { get; set; }
+    public required string Dosage { get; set; }
+    public required string Instruction { get; set; }
 
     public void Mapping(Profile profile)
     {

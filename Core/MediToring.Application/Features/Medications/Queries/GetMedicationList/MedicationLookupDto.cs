@@ -3,7 +3,7 @@ namespace MediToring.Application.Features.Medications.Queries.GetMedicationList;
 public class MedicationLookupDto : IMapWith<Medication>
 {
     public Guid Id { get; set; }
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
     public void Mapping(Profile profile)
     {
