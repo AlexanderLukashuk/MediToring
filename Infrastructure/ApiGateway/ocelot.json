@@ -1,0 +1,44 @@
+{
+    "Routes": [
+      {
+        "DownstreamPathTemplate": "/api/Authenticate/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 5001
+          }
+        ],
+        "UpstreamPathTemplate": "/auth/{everything}",
+        "UpstreamHttpMethod": [ "POST" ]
+      },
+      {
+        "DownstreamPathTemplate": "/api/Medication",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 5001
+          }
+        ],
+        "UpstreamPathTemplate": "/medication",
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+      },
+      {
+        "DownstreamPathTemplate": "/api/MedicationSchedule",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 5001
+          }
+        ],
+        "UpstreamPathTemplate": "/medication-schedule",
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+      }
+    ],
+    "GlobalConfiguration": {
+      "BaseUrl": "http://localhost:5000"
+    }
+  }
+  
