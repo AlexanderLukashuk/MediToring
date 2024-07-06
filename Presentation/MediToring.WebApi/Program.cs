@@ -5,6 +5,16 @@ builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddWebAPI(builder.Configuration);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
