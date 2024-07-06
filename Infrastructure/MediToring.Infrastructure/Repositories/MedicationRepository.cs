@@ -14,7 +14,7 @@ public class MedicationRepository(MediToringDbContext context) : IMedicationRepo
         context.Medications.Remove(medication);
     }
 
-    public async Task<Medication> Get(Guid guid)
+    public async Task<Medication?> Get(Guid guid)
     {
         var medication = await context.Medications.FindAsync(guid);
 
