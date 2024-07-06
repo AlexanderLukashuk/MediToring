@@ -19,12 +19,15 @@ public class MedicationScheduleConfiguration : IEntityTypeConfiguration<Medicati
 
         builder.Property(schedule => schedule.StartTime).IsRequired();
         builder.Property(schedule => schedule.EndTime).IsRequired();
-        builder.Property(schedule => schedule.IsTaken).IsRequired().HasDefaultValue(false);
 
         builder.OwnsMany(schedule => schedule.DailyDoses, dd =>
         {
             dd.Property(d => d.TimeOfDay).IsRequired();
             dd.Property(d => d.BeforeMeal).IsRequired();
         });
+
+        builder.HasMany(schedule => schedule.DoseRecords)
+            .WithOne(doseRecord => doseRecord.MedicationSchedule)
+            .HasForeignKey(doseRecord => doseRecord.MedicationScheduleId);
     }
 }
