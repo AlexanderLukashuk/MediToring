@@ -20,7 +20,7 @@ public class MedicationScheduleController(IMapper mapper, IMediator mediator) : 
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<ActionResult<MedicationScheduleVm>> Get(Guid id)
     {
-        var query = new GetUserMedicationSchedulesForMedicationQuery { UserId = UserId, MedicationId = id };
+        var query = new GetUserMedicationSchedulesForMedicationQuery { UserId = UserId, ScheduleId = id };
         var vm = await mediator.Send(query);
         return Ok(vm);
     }
