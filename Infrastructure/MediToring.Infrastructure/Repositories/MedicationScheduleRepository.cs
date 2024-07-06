@@ -1,3 +1,5 @@
+using System.Xml.Serialization;
+
 namespace MediToring.Infrastructure.Repositories;
 
 public class MedicationScheduleRepository(MediToringDbContext context) : IMedicationScheduleRepository
@@ -14,7 +16,7 @@ public class MedicationScheduleRepository(MediToringDbContext context) : IMedica
         context.MedicationSchedules.Remove(schedule);
     }
 
-    public async Task<MedicationSchedule> Get(Guid id)
+    public async Task<MedicationSchedule?> Get(Guid id)
     {
         return await context.MedicationSchedules.FindAsync(id);
     }
@@ -29,17 +31,27 @@ public class MedicationScheduleRepository(MediToringDbContext context) : IMedica
     public async Task<IEnumerable<MedicationSchedule>> GetByUserId(string userId)
     {
         return await context.MedicationSchedules
-            .Where(schedule => schedule.UserId == userId)
             .Include(schedule => schedule.Medication)
+            .Include(schedule => schedule.DoseRecords)
+            .Where(schedule => schedule.UserId == userId)
             .ToListAsync();
     }
 
     public async Task<IEnumerable<MedicationSchedule>> GetByUserIdAndMedicationId(string userId, Guid medicationId)
     {
         return await context.MedicationSchedules
-            .Where(schedule => schedule.UserId == userId && schedule.MedicationId == medicationId)
             .Include(schedule => schedule.Medication)
+            .Include(schedule => schedule.DoseRecords)
+            .Where(schedule => schedule.UserId == userId && schedule.MedicationId == medicationId)
             .ToListAsync();
+    }
+
+    public async Task<MedicationSchedule?> GetByIdAndUserId(Guid id, string userId)
+    {
+        return await context.MedicationSchedules
+            .Include(schedule => schedule.Medication)
+            .Include(schedule => schedule.DoseRecords)
+            .FirstOrDefaultAsync(schedule => schedule.Id == id && schedule.UserId == userId);
     }
 
     public void Update(MedicationSchedule schedule)

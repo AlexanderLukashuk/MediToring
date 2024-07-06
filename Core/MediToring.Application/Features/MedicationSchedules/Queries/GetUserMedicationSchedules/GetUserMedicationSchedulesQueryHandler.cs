@@ -13,7 +13,11 @@ public class GetUserMedicationSchedulesQueryHandler(IMedicationScheduleRepositor
             MedicationName = schedule.Medication.Name,
             StartTime = schedule.StartTime,
             EndTime = schedule.EndTime,
-            IsTaken = schedule.IsTaken
+            DoseRecords = schedule.DoseRecords.Select(record => new DailyDoseRecordDto
+            {
+                Date = record.Date,
+                IsTaken = record.IsTaken
+            }).ToList()
         }).ToList();
 
         return new MedicationScheduleVm { Schedules = scheduleDtos };
