@@ -4,6 +4,7 @@ namespace MediToring.WebApi.Controllers;
 [Route("api/[controller]")]
 public class AuthenticateController(
     UserManager<IdentityUser> userManager,
+    RoleManager<IdentityRole> roleManager,
     IConfiguration configuration
 ) : ControllerBase
 {
@@ -20,12 +21,19 @@ public class AuthenticateController(
                 return BadRequest("User name cannot be null or empty");
             }
 
+            var userRoles = await userManager.GetRolesAsync(user);
+
             var authClaims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.UserName),
                 new Claim(ClaimTypes.NameIdentifier, user.Id),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
+
+            foreach (var userRole in userRoles)
+            {
+                authClaims.Add(new Claim(ClaimTypes.Role, userRole));
+            }
 
             var token = GetToken(authClaims);
 
