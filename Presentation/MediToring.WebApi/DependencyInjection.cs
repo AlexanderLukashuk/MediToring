@@ -1,3 +1,5 @@
+using MediToring.WebApi.Models.Request.Profiles;
+
 namespace MediToring.WebApi;
 
 public static class DependencyInjection
@@ -8,9 +10,23 @@ public static class DependencyInjection
 
         services.AddAutoMapper(config =>
         {
-            config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
-            config.AddProfile(new AssemblyMappingProfile(typeof(MedicationLookupDto).Assembly));
-            config.AddProfile(new AssemblyMappingProfile(typeof(MedicationDetailsVm).Assembly));
+            var assemblies = new[]
+            {
+                Assembly.GetExecutingAssembly(),
+                typeof(MedicationLookupDto).Assembly,
+                typeof(MedicationDetailsVm).Assembly,
+                typeof(CreateProfileDto).Assembly,
+            };
+
+            foreach (var assembly in assemblies)
+            {
+                config.AddProfile(new AssemblyMappingProfile(assembly));
+            }
+
+            // config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
+            // config.AddProfile(new AssemblyMappingProfile(typeof(MedicationLookupDto).Assembly));
+            // config.AddProfile(new AssemblyMappingProfile(typeof(MedicationDetailsVm).Assembly));
+            // config.AddProfile(new AssemblyMappingProfile(typeof(CreateProfileDto).Assembly));
             // чат гпт сказал эта строка не нужна:
             // config.AddProfile(new AssemblyMappingProfile(typeof(IMediToringDbContext).Assembly));
         });
