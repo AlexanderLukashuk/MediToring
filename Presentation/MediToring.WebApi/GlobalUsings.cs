@@ -28,6 +28,7 @@ global using MediToring.Application.Features.MedicationSchedules.Queries.GetUser
 global using MediToring.Application.Features.MedicationSchedules.Queries.GetUserMedicationSchedulesForMedication;
 global using MediToring.Application.Features.MedicationSchedules.Queries.Models;
 global using MediToring.Application.Features.MedicationSchedules.Commands.Models;
+global using MediToring.Application.Features.Profiles.Commands.CreateProfile;
 global using MediToring.Infrastructure;
 global using MediToring.WebApi;
 global using MediToring.WebApi.Filters;

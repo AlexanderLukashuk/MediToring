@@ -1,3 +1,7 @@
+using MediToring.Application.Features.Profiles.Commands.CreateProfile;
+using MediToring.Domain.Models;
+using MediToring.WebApi.Models.Request.Profiles;
+
 namespace MediToring.WebApi.Controllers;
 
 [ApiController]
@@ -5,7 +9,9 @@ namespace MediToring.WebApi.Controllers;
 public class AuthenticateController(
     UserManager<IdentityUser> userManager,
     RoleManager<IdentityRole> roleManager,
-    IConfiguration configuration
+    IConfiguration configuration,
+    IMediator mediator,
+    IMapper mapper
 ) : ControllerBase
 {
     [HttpPost]
@@ -60,9 +66,30 @@ public class AuthenticateController(
             SecurityStamp = Guid.NewGuid().ToString(),
             UserName = model.Username
         };
+
         var result = await userManager.CreateAsync(user, model.Password);
         if (!result.Succeeded)
             return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User creation failed! Please check user details asn try again." });
+
+        CreateProfileDto profile = new()
+        {
+            FirstName = model.FirstName,
+            LastName = model.LastName,
+            DateOfBirth = model.DateOfBirth,
+            Height = model.Height,
+            Weight = model.Weight
+        };
+
+        // var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var command = mapper.Map<CreateProfileCommand>(profile);
+        command.UserId = user.Id;
+
+        Console.WriteLine($"Mapped CreateProfileCommand: {command.FirstName}, {command.LastName}, {command.DateOfBirth}, {command.Height}, {command.Weight}, {command.UserId}");
+
+        var id = await mediator.Send(command);
+
+        if (id == Guid.Empty)
+            return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = " Error", Message = "Create profile was failed" });
 
         return Ok(new Response { Status = "Success", Message = "User created successfully!" });
     }
