@@ -7,4 +7,5 @@ public interface IProfileRepository : IRepository<UserProfile>
     UserProfile Add(UserProfile profile);
     Task<UserProfile?> Get(Guid guid);
     void Update(UserProfile profile);
+    Task<UserProfile?> GetByUserId(string userId);
 }

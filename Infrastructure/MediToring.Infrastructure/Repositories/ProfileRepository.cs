@@ -21,4 +21,10 @@ public class ProfileRepository(MediToringDbContext context) : IProfileRepository
     {
         context.Entry(profile).State = EntityState.Modified;
     }
+
+    public async Task<UserProfile?> GetByUserId(string userId)
+    {
+        return await context.UserProfiles
+            .FirstOrDefaultAsync(profile => profile.UserId == userId);
+    }
 }
