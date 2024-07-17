@@ -1,4 +1,5 @@
 using MediToring.Application.Features.Profiles.Commands.UpdateProfile;
+using MediToring.Application.Features.Profiles.Queries.GetAllDoctors;
 using MediToring.Application.Features.Profiles.Queries.GetProfile;
 using MediToring.WebApi.Models.Request.Profiles;
 
@@ -39,6 +40,16 @@ public class ProfileController(IMediator mediator, IMapper mapper) : ControllerB
         command.UserId = UserId;
         await mediator.Send(command);
         return NoContent();
+    }
+
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    public async Task<IActionResult> GetAllDoctors()
+    {
+        var query = new GetAllDoctorsQuery();
+        var result = await mediator.Send(query);
+        return Ok(result);
     }
 
     private string UserId => User.FindFirstValue(ClaimTypes.NameIdentifier) ?? string.Empty;
