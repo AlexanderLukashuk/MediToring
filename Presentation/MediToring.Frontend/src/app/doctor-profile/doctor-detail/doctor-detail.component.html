@@ -1,0 +1,6 @@
+<div class="doctor-detail-container" *ngIf="doctor">
+    <h2>{{ doctor.firstName }} {{ doctor.lastName }}</h2>
+    <p>Date of Birth: {{ doctor.dateOfBirth | date }}</p>
+    <p>Height: {{ doctor.height }} cm</p>
+    <p>Weight: {{ doctor.weight }} kg</p>
+</div>
