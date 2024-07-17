@@ -1,0 +1,8 @@
+<div class="doctor-list-container">
+    <h2>Doctors</h2>
+    <ul>
+        <li *ngFor="let doctor of doctors">
+            <a [routerLink]="['/doctor', doctor.userId]">{{ doctor.firstName }} {{ doctor.lastName }}</a>
+        </li>
+    </ul>
+</div>
