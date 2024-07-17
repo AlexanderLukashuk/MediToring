@@ -8,4 +8,5 @@ public interface IProfileRepository : IRepository<UserProfile>
     Task<UserProfile?> Get(Guid guid);
     void Update(UserProfile profile);
     Task<UserProfile?> GetByUserId(string userId);
+    Task<List<UserProfile>> GetAllDoctors(CancellationToken cancellationToken);
 }

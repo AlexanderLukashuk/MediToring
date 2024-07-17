@@ -27,4 +27,23 @@ public class ProfileRepository(MediToringDbContext context) : IProfileRepository
         return await context.UserProfiles
             .FirstOrDefaultAsync(profile => profile.UserId == userId);
     }
+
+    public async Task<List<UserProfile>> GetAllDoctors(CancellationToken cancellationToken)
+    {
+        var doctorRoleId = await context.Roles
+            .Where(r => r.Name == "Doctor")
+            .Select(r => r.Id)
+            .FirstOrDefaultAsync(cancellationToken);
+
+        var doctorUserIds = await context.UserRoles
+            .Where(ur => ur.RoleId == doctorRoleId)
+            .Select(ur => ur.UserId)
+            .ToListAsync(cancellationToken);
+
+        var doctors = await context.UserProfiles
+            .Where(up => doctorUserIds.Contains(up.UserId))
+            .ToListAsync(cancellationToken);
+
+        return doctors;
+    }
 }
