@@ -8,6 +8,8 @@ public interface IMediToringDbContext
     DbSet<MedicationSchedule> MedicationSchedules { get; set;}
     DbSet<DailyDoseRecord> DailyDoseRecords { get; set; }
     DbSet<UserProfile> UserProfiles { get; set; }
+    DbSet<DoctorApplication> DoctorApplications { get; set; }
+    DbSet<DoctorProfile> DoctorProfiles { get; set; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

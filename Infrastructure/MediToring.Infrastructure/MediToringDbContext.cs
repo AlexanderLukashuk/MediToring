@@ -6,6 +6,8 @@ public class MediToringDbContext : IdentityDbContext<IdentityUser>, IMediToringD
     public DbSet<MedicationSchedule> MedicationSchedules { get; set; }
     public DbSet<DailyDoseRecord> DailyDoseRecords { get; set; }
     public DbSet<UserProfile> UserProfiles { get; set; }
+    public DbSet<DoctorApplication> DoctorApplications { get; set; }
+    public DbSet<DoctorProfile> DoctorProfiles { get; set; }
 
     public MediToringDbContext(DbContextOptions<MediToringDbContext> options)
         : base(options) { }
@@ -16,6 +18,8 @@ public class MediToringDbContext : IdentityDbContext<IdentityUser>, IMediToringD
         modelBuilder.ApplyConfiguration(new MedicationScheduleConfiguration());
         modelBuilder.ApplyConfiguration(new DailyDoseRecordConfiguration());
         modelBuilder.ApplyConfiguration(new UserProfileConfiguration());
+        modelBuilder.ApplyConfiguration(new DoctorApplicationConfiguration());
+        modelBuilder.ApplyConfiguration(new DoctorProfileConfiguration());
         
         base.OnModelCreating(modelBuilder);
     }
