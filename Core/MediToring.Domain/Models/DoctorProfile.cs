@@ -12,7 +12,11 @@ public class DoctorProfile : EntityBase<Guid>, IAggregateRoot
     public List<string> Reviews { get; set; }
     public List<int> Rating { get; set; }
 
-    public DoctorProfile() { }
+    public DoctorProfile()
+    {
+        Reviews = new List<string>();
+        Rating = new List<int>();
+    }
 
     public DoctorProfile(Guid userProfileId, string specialization, string qualification, int experience, string clinic, string bio)
     {
