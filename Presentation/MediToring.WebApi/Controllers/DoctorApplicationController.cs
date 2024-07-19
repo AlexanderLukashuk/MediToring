@@ -26,12 +26,4 @@ public class DoctorApplicationController(IMediator mediator) : ControllerBase
         var result = await mediator.Send(command);
         return Ok(new Response { Status = "Success", Message = "Application submitted successfully!" });
     }
-
-    // [HttpGet]
-    // [Authorize(Roles = "Admin")]
-    // [Route("all-applications")]
-    // public Task<IActionResult> GetApplications()
-    // {
-
-    // }
 }
